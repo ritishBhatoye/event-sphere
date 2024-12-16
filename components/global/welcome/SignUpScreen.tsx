@@ -17,7 +17,7 @@ export const SignUpScreen = () => {
   return (
     <SafeAreaView className='w-full h-full'>
 <View className='relative top-20'>
-<Text className='text-light-secondary text-5xl font-bold text-center '>
+<Text className='text-primary-700 text-5xl font-bold text-center '>
               SIGN UP
         </Text>
 </View>
