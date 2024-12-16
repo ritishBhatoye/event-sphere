@@ -1,3 +1,4 @@
+import { Button } from '@/components/atoms/Button';
 import { TextField } from '@/components/atoms/TextField';
 import React, { useState } from 'react'
 import { View,Text } from 'react-native';
@@ -79,8 +80,11 @@ export const SignUpScreen = () => {
        value={confirmPassword}
        className='mb-4 '
        />
+           <Button 
+  label="Sign In"
+/>
        </View>
-       
+   
     </SafeAreaView>
   )
 }
