@@ -9,7 +9,8 @@ import { Text } from 'react-native';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import "../global.css";
-import { SignUpScreen } from '@/components/global/welcome/SignUpScreen';
+import { OnboardingScreens } from '@/components/global/welcome/onBoardingScreens';
+// import { SignUpScreen } from '@/components/global/welcome/SignUpScreen';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -31,11 +32,14 @@ export default function RootLayout() {
   }
 
   return (
-    <SafeAreaView>
-    <Text className='justify-center items-center h-full'>
-      <SignUpScreen/>
-    </Text>
-    </SafeAreaView>
+  
+    <OnboardingScreens/>
+   
+    // <SafeAreaView>
+    // <Text className='justify-center items-center h-full'>
+    //   <SignUpScreen/>
+    // </Text>
+    // </SafeAreaView>
     // <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
     //   <Stack>
     //     <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
