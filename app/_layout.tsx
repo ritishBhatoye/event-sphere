@@ -32,9 +32,9 @@ export default function RootLayout() {
   }
 
   return (
-  
+  <SafeAreaView>
     <OnboardingScreens/>
-   
+   </SafeAreaView>
     // <SafeAreaView>
     // <Text className='justify-center items-center h-full'>
     //   <SignUpScreen/>

@@ -1,34 +1,29 @@
 'use client'
 
-import { View, Text, Pressable } from 'react-native'
+import { View, Text, Pressable, Image } from 'react-native'
 import { useRouter } from 'expo-router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Animated, { 
   useAnimatedStyle, 
   withRepeat, 
   withSequence, 
   withTiming 
 } from 'react-native-reanimated'
+import { Asset } from 'expo-asset'
 
-interface OnboardingScreen {
-  image: string
-  heading: string
-  text: string
-}
-
-const screens: OnboardingScreen[] = [
+const screens = [
   {
-    image: '../../../../assets/images/onBoardingScreen/screen1.jpg',
+    image: require('../../../../assets/images/onBoardingScreen/screen1.jpg'),
     heading: 'Welcome to Our App',
     text: 'Discover amazing features and possibilities',
   },
   {
-    image: '../../../../assets/images/onBoardingScreen/screen2.jpg',
+    image: require('../../../../assets/images/onBoardingScreen/screen2.jpg'),
     heading: 'Explore More',
     text: `Find what you're looking for easily`,
   },
   {
-    image: '../../../../assets/images/onBoardingScreen/screen3.jpg',
+    image: require('../../../../assets/images/onBoardingScreen/screen3.jpg'),
     heading: 'Get Started',
     text: 'Join our community today',
   },
@@ -37,6 +32,28 @@ const screens: OnboardingScreen[] = [
 export function OnboardingScreens() {
   const [currentScreen, setCurrentScreen] = useState(0)
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    async function preloadImages() {
+      try {
+        const imageAssets = [
+          ...screens.map(screen => screen.image),
+          require('../../../../assets/images/onBoardingScreen/screen4.jpg')
+        ]
+        
+        await Promise.all(
+          imageAssets.map(image => Asset.fromModule(image).downloadAsync())
+        )
+      } catch (error) {
+        console.error('Error preloading images:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    preloadImages()
+  }, [])
 
   const animatedBorder = useAnimatedStyle(() => ({
     borderWidth: withRepeat(
@@ -65,12 +82,12 @@ export function OnboardingScreens() {
 
   if (currentScreen === 3) {
     return (
-      <View 
-        className="relative h-full w-full bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${require('../../../../assets/images/onBoardingScreen/screen4.jpg')})`
-        }}
-      >
+      <View className="relative h-full w-full">
+        <Image
+          source={require('../../../../assets/images/onBoardingScreen/screen4.jpg')}
+          className="absolute h-full w-full"
+          resizeMode="cover"
+        />
         <View className="absolute inset-0 flex-col items-center justify-center p-6 space-y-4">
           <Pressable 
             className="w-full max-w-[320px] bg-primary p-4 rounded-lg"
@@ -90,12 +107,12 @@ export function OnboardingScreens() {
   }
 
   return (
-    <View 
-      className="relative h-full w-full bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${screens[currentScreen].image})`
-      }}
-    >
+    <View className="relative h-full w-full">
+      <Image
+        source={screens[currentScreen].image}
+        className="absolute h-full w-full"
+        resizeMode="cover"
+      />
       <View className="flex flex-row justify-between absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent p-6 pb-12">
         <View className="mb-8">
           <Text className="mb-2 text-2xl font-bold text-white">
