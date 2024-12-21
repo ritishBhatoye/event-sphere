@@ -1,4 +1,7 @@
 import { Image, StyleSheet, Platform } from 'react-native';
+import { OnboardingScreens } from '@/components/global/welcome/onBoardingScreens';
+import { useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -6,6 +9,29 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
+  const [showOnboarding, setShowOnboarding] = useState(true);
+
+  useEffect(() => {
+    checkFirstLaunch();
+  }, []);
+
+  const checkFirstLaunch = async () => {
+    try {
+      const hasLaunched = await AsyncStorage.getItem('hasLaunched');
+      if (hasLaunched) {
+        setShowOnboarding(false);
+      } else {
+        await AsyncStorage.setItem('hasLaunched', 'true');
+      }
+    } catch (error) {
+      console.error('Error checking first launch:', error);
+    }
+  };
+
+  if (showOnboarding) {
+    return <OnboardingScreens />;
+  }
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
