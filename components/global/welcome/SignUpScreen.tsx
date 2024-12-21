@@ -17,12 +17,12 @@ export const SignUpScreen = () => {
   const[confirmPassword,setConfirmPassword]=useState('');
   return (
     <SafeAreaView className='w-full h-full'>
-<View className='relative top-20'>
+<View className='relative mt-[10%]'>
 <Text className='text-primary-700 text-5xl font-bold text-center '>
               SIGN UP
         </Text>
 </View>
-      <View className="gap-6 px-6 relative top-[15%] h-full">
+      <View className="gap-6 px-6 relative top-[5%] h-full">
      
         <View className='flex-row gap-4 w-full justify-between '>
           <View className='flex-1'>
@@ -81,7 +81,8 @@ export const SignUpScreen = () => {
        className='mb-4 '
        />
            <Button 
-  label="Sign In"
+           className='mt-[20%] bg-primary-500/80 text-'
+  label="Sign Up"
 />
        </View>
    

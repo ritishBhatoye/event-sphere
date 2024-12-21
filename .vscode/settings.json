@@ -1,0 +1,7 @@
+{
+    "vs-code-prettier-eslint.prettierLast": true,
+    "editor.defaultFoldingRangeProvider": "rvest.vs-code-prettier-eslint",
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "notebook.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "reactSnippets.settings.prettierEnabled": true
+}

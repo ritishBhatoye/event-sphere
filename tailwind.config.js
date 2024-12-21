@@ -6,14 +6,24 @@ module.exports = {
  extend: {
       colors: {
         primary: {
-          100: '#EDE2F7',
-          200: '#D2BCEE',
-          300: '#B898E4',
-          400: '#9F73DA',
-          500: '#8550CF',
-          600: '#6D3FB4',
-          700: '#652E99',
-        },
+  100: '#F3E4DA', // Very light brown
+  200: '#E2C6A9', // Light brown
+  300: '#D1A888', // Soft brown
+  400: '#BF8A66', // Medium brown
+  500: '#8B4513', // Base brown
+  600: '#723910', // Darker brown
+  700: '#5A2D0D', // Dark brown
+},
+
+        // primary: {
+        //   100: '#EDE2F7',
+        //   200: '#D2BCEE',
+        //   300: '#B898E4',
+        //   400: '#9F73DA',
+        //   500: '#8550CF',
+        //   600: '#6D3FB4',
+        //   700: '#652E99',
+        // },
         secondary: {
           100: '#E3F3FD',
           200: '#B8E2FB',

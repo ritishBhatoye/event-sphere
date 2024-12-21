@@ -1,5 +1,5 @@
-import { LoginScreen } from '@/components/global/welcome/LoginScreen';
+import { SignInScreen } from '@/components/global/welcome/SignInScreen';
 
 export default function SignIn() {
-  return <LoginScreen />;
+  return <SignInScreen/>;
 } 

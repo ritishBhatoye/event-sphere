@@ -3,6 +3,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import "../global.css";
+import { OnboardingScreens } from '@/components/global/welcome/onBoardingScreens';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,10 +23,9 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-      <Stack.Screen name="index" options={{ headerShown: true }} />
-      <Stack.Screen name="(auth)" options={{ headerShown: true }} />
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="(onBoardingScreen)" />
+      <Stack.Screen name="(auth)/signin" options={{ headerShown: false }}/>
     </Stack>
   );
 }
